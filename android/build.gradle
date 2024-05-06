@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath 'com.android.tools.build:gradle:8.4.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -25,8 +25,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 28
-    // Condition for namespace compatibility in AGP 8
+    compileSdk 34
+// Condition for namespace compatibility in AGP 8
     if (project.android.hasProperty("namespace")) {
         namespace 'com.amplitude.amplitude_flutter'
     }
@@ -40,6 +40,10 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 dependencies {
